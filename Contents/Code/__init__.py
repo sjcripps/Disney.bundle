@@ -37,10 +37,10 @@ def Shows(title, group):
 		except:
 			try: thumb = show['square2x']
 			except:
-                            try: thumb = show['square']
-                            except: continue
-                            # shows without icons seem not to have any content either so,
-                            # no point adding them to the list
+				try: thumb = show['square']
+				except: continue
+				# shows without icons seem not to have any content either so,
+				# no point adding them to the list
 
 		url = show['href']
 
