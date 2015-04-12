@@ -74,8 +74,13 @@ def Videos(title, thumb, url):
 				else:
 					clip_title = clip['title']
 
-				summary = clip['description']
-				duration = int(clip['duration_sec'])*1000
+				summary = clip['description'] if 'description' in clip else None
+
+				try:
+					duration = int(clip['duration_sec'])*1000
+				except:
+					duration = None
+
 				clip_thumb = clip['thumb']
 				url = clip['href']
 
