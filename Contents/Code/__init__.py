@@ -26,6 +26,12 @@ def Shows(title, group):
 	json = JSON.ObjectFromURL(SHOWS_URL % group)
 
 	for show in json['stack'][0]['data']:
+
+		url = show['href']
+
+		if not 'video.disney.com/' in url:
+			continue
+
 		title = show['title']
 
 		try: summary = show['description']
@@ -41,8 +47,6 @@ def Shows(title, group):
 				except: continue
 				# shows without icons seem not to have any content either so,
 				# no point adding them to the list
-
-		url = show['href']
 
 		oc.add(DirectoryObject(
 			key = Callback(Videos, title=title, thumb=thumb, url=url),
