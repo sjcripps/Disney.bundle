@@ -13,8 +13,8 @@ def Start():
 def MainMenu():
 
 	oc = ObjectContainer()
-	oc.add(DirectoryObject(key=Callback(Shows, title="Shows",group='shows'), title="Shows"))
-	oc.add(DirectoryObject(key=Callback(Shows, title="Collections",group='collections'), title="Collections"))
+	oc.add(DirectoryObject(key=Callback(Shows, title='Shows', group='shows'), title='Shows'))
+	oc.add(DirectoryObject(key=Callback(Shows, title='Collections', group='collections'), title='Collections'))
 
 	return oc
 
@@ -66,12 +66,15 @@ def Videos(title, thumb, url):
 	json = JSON.ObjectFromURL(json_url)
 
 	for group in json['stack']:
+
 		if group['type'] == 'video':
+
 			for clip in group['data']:
+
 				if 'Disney Junior' in title or 'Disney XD' in title:
-					if "Live Stream" in clip['title']:
+					if 'Live Stream' in clip['title']:
 						continue
-					if 'Disney' not in clip['ptitle']:
+					if 'ptitle' in clip and 'Disney' not in clip['ptitle']:
 						clip_title = clip['ptitle'] + ' - ' + clip['title']
 					else:
 						clip_title = clip['title']
