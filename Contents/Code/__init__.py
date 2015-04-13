@@ -71,11 +71,12 @@ def Videos(title, thumb, url):
 
 			for clip in group['data']:
 
-				if 'Disney Junior' in title or 'Disney XD' in title:
-					if 'Live Stream' in clip['title']:
-						continue
+				if 'live stream' in clip['title'].lower():
+					continue
+
+				if 'disney junior' in title.lower() or 'disney xd' in title.lower():
 					if 'ptitle' in clip and 'Disney' not in clip['ptitle']:
-						clip_title = clip['ptitle'] + ' - ' + clip['title']
+						clip_title = '%s - %s' (clip['ptitle'], clip['title'])
 					else:
 						clip_title = clip['title']
 				else:
